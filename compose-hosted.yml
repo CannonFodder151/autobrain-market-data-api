@@ -1,0 +1,17 @@
+services:
+  market-data:
+    image: ghcr.io/cannonfodder151/market-data-api:hosted
+    container_name: market-data
+    restart: unless-stopped
+    environment:
+      API_KEY: REDACTED
+    command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8012"]
+    expose:
+      - "8012"
+    networks:
+      - default
+
+networks:
+  default:
+    name: autobrain-hosted_default
+    external: true
