@@ -1,0 +1,10 @@
+services:
+  market-data:
+    image: ghcr.io/cannonfodder151/market-data-api:hosted
+    container_name: market-data
+    restart: unless-stopped
+    environment:
+      API_KEY: f41641f9f13c9b5d00e1c08c7eed6337ad46c6c8632271ae
+    command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8012"]
+    ports:
+      - "8012:8012"
